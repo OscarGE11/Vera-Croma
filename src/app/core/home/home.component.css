@@ -1,0 +1,24 @@
+.color-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.color-box:hover {
+  padding: 8px;
+}
+
+.color-box:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+.color-box p {
+  position: relative;
+  z-index: 2;
+}

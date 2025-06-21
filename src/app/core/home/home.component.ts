@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ColorGenerationService } from '../../services/color-generation.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,31 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  blue = '#9483d1';
-  green = '#51b163';
-  red = '#e55e5e';
+  constructor(private colorGenerationService: ColorGenerationService) {}
+
+  firstColor: string = '';
+  secondColor: string = '';
+  thirdColor: string = '';
+
+  ngOnInit(): void {
+    this.generateColors();
+  }
+
+  generateColors(): void {
+    this.firstColor = this.colorGenerationService.generateColor();
+    this.secondColor = this.colorGenerationService.generateColor();
+
+    if (this.firstColor === this.secondColor) {
+      this.secondColor = this.colorGenerationService.generateColor();
+    }
+
+    this.thirdColor = this.colorGenerationService.generateColor();
+
+    if (
+      this.firstColor === this.thirdColor ||
+      this.secondColor === this.thirdColor
+    ) {
+      this.thirdColor = this.colorGenerationService.generateColor();
+    }
+  }
 }

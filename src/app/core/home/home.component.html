@@ -1,5 +1,33 @@
 <main class="grid grid-flow-col auto-cols-fr w-full h-[calc(100vh-8rem)]">
-  <div [style.background-color]="blue" class="p-4 text-center rounded"></div>
-  <div [style.background-color]="red" class="p-4 text-center rounded"></div>
-  <div [style.background-color]="green" class="p-4 text-center rounded"></div>
+  <div
+    [style.background-color]="firstColor"
+    class="p-4 text-center rounded-tl-lg flex flex-col justify-center items-center"
+  >
+    <div class="color-box p-2 cursor-pointer rounded transition-colors">
+      <p class="font-semibold">{{ firstColor.toUpperCase() }}</p>
+    </div>
+  </div>
+  <div
+    [style.background-color]="secondColor"
+    class="p-4 text-center flex flex-col justify-center items-center"
+  >
+    <div class="color-box p-2 cursor-pointer rounded transition-colors">
+      <p class="font-semibold">{{ secondColor.toUpperCase() }}</p>
+    </div>
+  </div>
+  <div
+    [style.background-color]="thirdColor"
+    class="p-4 text-center rounded-tr-lg flex flex-col justify-center items-center"
+  >
+    <div class="color-box p-2 cursor-pointer rounded transition-colors">
+      <p class="font-semibold">{{ thirdColor.toUpperCase() }}</p>
+    </div>
+  </div>
 </main>
+
+<button
+  class="fixed bottom-16 left-0 right-0 w-32 mx-auto bg-slate-300 border-2 border-slate-500 hover:bg-slate-500 hover:border-slate-600 hover:text-white transition-colors p-2 rounded"
+  (click)="generateColors()"
+>
+  Generate
+</button>
