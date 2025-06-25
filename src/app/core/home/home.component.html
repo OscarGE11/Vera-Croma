@@ -6,24 +6,53 @@
     [style.background-color]="firstColor"
     class="p-4 text-center flex flex-col justify-center items-center"
   >
-    <div class="color-box p-2 cursor-pointer rounded transition-colors">
-      <p class="font-semibold">{{ firstColor.toUpperCase() }}</p>
+    <div
+      class="color-box p-2 cursor-pointer rounded transition-colors"
+      (click)="copyColor(firstColor)"
+      matTooltip="Copy color to clipboard"
+      matTooltipClass="custom-tooltip"
+    >
+      <p class="font-semibold">
+        {{ firstColor.toUpperCase() }}
+      </p>
     </div>
   </div>
   <div
     [style.background-color]="secondColor"
     class="p-4 text-center flex flex-col justify-center items-center"
   >
-    <div class="color-box p-2 cursor-pointer rounded transition-colors">
-      <p class="font-semibold">{{ secondColor.toUpperCase() }}</p>
+    @if (showCopyInfo) {
+    <p
+      [@fadeAnimation]
+      class="text-white bg-stone-400 p-2 rounded fixed top-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-opacity"
+    >
+      Color copied!
+    </p>
+    }
+    <div
+      class="color-box p-2 cursor-pointer rounded transition-colors"
+      (click)="copyColor(secondColor)"
+      matTooltip="Copy color to clipboard"
+      matTooltipClass="custom-tooltip"
+    >
+      <p class="font-semibold">
+        {{ secondColor.toUpperCase() }}
+      </p>
     </div>
   </div>
   <div
     [style.background-color]="thirdColor"
     class="p-4 text-center flex flex-col justify-center items-center"
   >
-    <div class="color-box p-2 cursor-pointer rounded transition-colors">
-      <p class="font-semibold">{{ thirdColor.toUpperCase() }}</p>
+    <div
+      class="color-box p-2 cursor-pointer rounded transition-colors"
+      (click)="copyColor(thirdColor)"
+      matTooltip="Copy color to clipboard"
+      matTooltipClass="custom-tooltip"
+    >
+      <p class="font-semibold">
+        {{ thirdColor.toUpperCase() }}
+      </p>
     </div>
   </div>
 </main>
