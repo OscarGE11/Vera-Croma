@@ -42,6 +42,14 @@ export class HomeComponent {
   secondColor: string = '';
   thirdColor: string = '';
   showCopyInfo: boolean = false;
+  coppiedColor: string = '';
+  hideTimer: any;
+
+  ngOnDestroy(): void {
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+    }
+  }
 
   ngOnInit(): void {
     this.generateColors();
@@ -67,12 +75,12 @@ export class HomeComponent {
 
   copyColor(color: string): void {
     this.clipboard.copy(color);
-
-    setTimeout(() => {
-      this.showCopyInfo = true;
-    }, 100);
-
-    setTimeout(() => {
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+    }
+    this.showCopyInfo = true;
+    this.coppiedColor = color.toUpperCase();
+    this.hideTimer = setTimeout(() => {
       this.showCopyInfo = false;
     }, 1500);
   }
