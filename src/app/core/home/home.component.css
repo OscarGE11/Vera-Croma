@@ -22,3 +22,7 @@
   position: relative;
   z-index: 2;
 }
+
+article {
+  color: #9483d1;
+}

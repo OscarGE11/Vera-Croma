@@ -44,6 +44,7 @@ export class HomeComponent {
   showCopyInfo: boolean = false;
   coppiedColor: string = '';
   hideTimer: any;
+  showDisclaimer: boolean = true;
 
   ngOnDestroy(): void {
     if (this.hideTimer) {
@@ -75,11 +76,11 @@ export class HomeComponent {
 
   copyColor(color: string): void {
     this.clipboard.copy(color);
+    this.coppiedColor = color.toUpperCase();
+    this.showCopyInfo = true;
     if (this.hideTimer) {
       clearTimeout(this.hideTimer);
     }
-    this.showCopyInfo = true;
-    this.coppiedColor = color.toUpperCase();
     this.hideTimer = setTimeout(() => {
       this.showCopyInfo = false;
     }, 1500);
